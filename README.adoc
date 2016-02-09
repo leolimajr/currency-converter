@@ -1,4 +1,4 @@
-= Currency Converter image:https://img.shields.io/shippable/56b9307b1895ca4474739e9f.svg["Build Status"]
+= Currency Converter image:https://img.shields.io/shippable/56b9307b1895ca4474739e9f.svg["Build Status", link="https://app.shippable.com/projects/56b9307b1895ca4474739e9f/"]
 
 This is a fully functional Currency Converter built in Java with a touch of Spring stuff, using https://openexchangerates.org/ as exchange rate provider.
 
