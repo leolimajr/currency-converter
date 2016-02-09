@@ -1,0 +1,64 @@
+= Currency Converter image:https://img.shields.io/shippable/56b9307b1895ca4474739e9f.svg["Build Status"]
+
+This is a fully functional Currency Converter built in Java with a touch of Spring stuff, using https://openexchangerates.org/ as exchange rate provider.
+
+[[used-technologies]]
+== Main Used Technologies
+
+* Maven 3 (Easy building)
+* Spring Boot (Crazy convention over configuration for production ready apps)
+* Spring Security (Authentication and Authorization)
+* Spring MVC (MVC Implementation)
+* Spring Actuator (Rest/JMX Monitoring featuring JVM data, Thread Dump, Metrics, Health Check, Metrics etc)
+* Spring Data JPA (Persistence and ORM)
+* Spring Cache  (Cool cache abstraction used for external requests. See ehcache.xml in resources folder for more info)
+* Spring Test, hamcrest, JUnit, Cucumber-JVM (Unit, Integration and Acceptance Tests)
+* Bootstrap 3 + Thymeleaf (Painless View Templates)
+* Logback (Logging framework)
+* H2 In Memory Database
+
+
+[[getting-started]]
+== Getting Started
+
+### System Requirements ###
+
+You need to install the following prior to run this app.
+
+* Oracle JDK 8
+* Maven 3.2+
+
+
+### Running ###
+[indent=0]
+----
+mvn spring-boot:run
+----
+
+* Open http://localhost:8090 in a web browser to access the app
+* Play around with Currency Converter!
+
+TIP: You can customize these ports by running:
+[indent=0]
+----
+mvn spring-boot:run -Dserver.port=8080
+----
+
+TIP: Access http://localhost:8090/instrumentation for  comprehensive monitor and management features powered by Spring Actuator. There are custom metrics
+for this app to monitor external integration with https://openexchangerates.org/ at /metrics endpoint.
+
+### Running tests ###
+[indent=0]
+----
+mvn verify
+----
+### Build artifact ###
+[indent=0]
+----
+mvn -DskipTests=true package
+----
+TIP: The generated artifact will be at target/currency-converter-1.0-SNAPSHOT.war
+
+== License
+This is an Open Source software released under the
+http://www.apache.org/licenses/LICENSE-2.0.html[Apache 2.0 license].
