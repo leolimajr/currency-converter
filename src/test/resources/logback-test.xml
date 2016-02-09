@@ -1,0 +1,11 @@
+<configuration>
+  <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+    <encoder class="ch.qos.logback.classic.encoder.PatternLayoutEncoder">
+      <pattern>%msg%n</pattern>
+    </encoder>
+  </appender>
+    <logger name="com.leolimajr" level="OFF" />
+  <root level="INFO">
+    <appender-ref ref="CONSOLE"/>
+  </root>
+</configuration>

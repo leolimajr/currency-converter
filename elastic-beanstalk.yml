@@ -1,0 +1,6 @@
+deploy:
+  artifact: target/currency-converter-1.0-SNAPSHOT.war
+global:
+  application_name: Currency Converter
+  default_region: eu-central-1
+  profile: eb-cli

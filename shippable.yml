@@ -1,0 +1,23 @@
+language: java
+jdk:
+	- oraclejdk8
+env:
+  global:
+    - secure: k9VnX8WlYSJGzyDnZ8ddBjJVTFGKvmoTRxYd0fSxMC9K7K2U1Q7vX5cD6NqnPcVn1MLmvVTr91gN9oaTLwKDVQ/xbjruixq6I0hv0dNzF5ONrQRc3Kfd2NkAQGalRniyIYA1N/nKNI5ItXuoAlDYnPMlgRGtzM1wGjGd+mzXwdLVSArHB32xXM/iyG8VNBKju0FGczhVy7RHO9FVDF1ljgITFouy7Btt43BN+h5dOEAZi16TwYEni6hP8P7bbb4Jf+ITDHfUllvUJjlemQjTd5Bj2o/Kw25IcIzZZvYp46g3G+6IpavIyS+Vz264An1bsfIOiKmDkjh5nOWOR+fv1A==
+before_install:
+  - SUDO=$(which sudo) && $SUDO pip install awsebcli
+before_script: 
+  - mkdir -p shippable/testresults
+  - mkdir -p ~/.aws
+  - echo '[profile eb-cli]' > ~/.aws/config
+  - echo "aws_access_key_id = $AWS_ACCESS_KEY" >> ~/.aws/config
+  - echo "aws_secret_access_key = $AWS_SECRET_KEY" >> ~/.aws/config
+  - mkdir -p .elasticbeanstalk
+  - cp elastic-beanstalk.yml .elasticbeanstalk/config.yml
+script:
+  - mvn clean
+  - mvn verify
+  - cp target/surefire-reports/TEST-*.xml target/failsafe-reports/TEST-*.xml target/cucumber-junit/TEST-*.xml shippable/testresults
+after_success:
+  - eb use production
+  - eb deploy --staged

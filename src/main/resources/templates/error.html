@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+ <title>Oops!</title>
+</head>
+<div th:replace="header :: head"></div>
+<body> 
+<nav th:replace="nav :: main"></nav>
+
+<div id="main" class="container-fluid">
+  
+ 
+			<div th:if="${error}" class="alert alert-danger" role="alert">
+				<strong th:text="${error}"></strong>
+				<strong th:text="${status}"></strong>
+				<strong th:text="${message}"></strong>
+			</div>
+ 
+</div>
+</body>
+</html>

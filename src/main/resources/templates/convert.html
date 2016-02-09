@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Convert</title>
+</head>
+<div th:replace="header :: head"></div>
+<body>
+	<nav th:replace="nav :: main"></nav>
+
+	<div id="main" class="container-fluid">
+
+		<bean id="numberFormat" class="java.text.NumberFormat" />
+
+		<form name="form" th:object="${converter}"
+			th:action="@{/currency/converter}" class="form-template form-x-large form-horizontal centered"
+			method="POST">
+
+			<h2 class="form-signin-heading">Convert</h2>
+
+
+			<div th:if="${#fields.hasErrors('global')}"
+				class="alert alert-danger" role="alert">
+				<strong th:each="err : ${#fields.globalErrors()}" th:text="${err}"></strong>
+			</div>
+
+
+
+			<div class="row">
+				<div class="form-group col-sm-5"
+					th:classappend="${#fields.hasErrors('*{from}')}? has-error">
+					<div class="input-group input-group-sm">
+						<label for="from" class="control-label">Currency I Have</label> <select
+							th:field="*{from}" class="bootstrap-select">
+							<option value="">Select any</option>
+							<option th:each="from : ${currencies}" th:value="${from}"
+								th:text="${from.name}"></option>
+						</select> <span class="help-block" th:if="${#fields.hasErrors('from')}"
+							th:errors="*{from}"></span>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				<div class="form-group col-sm-5"
+					th:classappend="${#fields.hasErrors('*{to}')}? has-error">
+					<div class="input-group input-group-sm">
+						<label for="to" class="control-label">Currency I Want</label><select
+							th:field="*{to}" class="bootstrap-select">
+							<option value="">Select any</option>
+							<option th:each="to : ${currencies}" th:value="${to}"
+								th:text="${to.name}"></option>
+						</select> <span class="help-block" th:if="${#fields.hasErrors('to')}"
+							th:errors="*{to}"></span>
+					</div>
+				</div>
+			</div>
+			<div class="row">
+				<div class="form-group col-sm-5"
+					th:classappend="${#fields.hasErrors('*{amount}')}? has-error">
+					<div class="input-group input-group-sm">
+						<label for="amount" class=" control-label">Amount</label> <input
+							type="text" th:field="*{amount}" class="form-control"
+							placeholder="0,00" autofocus="true" /> <span class="help-block"
+							th:if="${#fields.hasErrors('amount')}" th:errors="*{amount}"></span>
+					</div>
+				</div>
+			</div>	
+			<div class="row">
+				<div class="form-group col-sm-5"
+					th:classappend="${#fields.hasErrors('*{reference}')}? has-error">
+					<div class="input-group input-group-sm">
+						<label for="reference" class="control-label">Historical
+							Date (dd/mm/yyyy)</label> <input type="text" th:field="*{reference}"
+							class="form-control" placeholder="dd/mm/yyyy" />
+							<span
+							class="help-block" th:if="${#fields.hasErrors('reference')}"
+							th:errors="*{reference}"> </span>
+					</div>
+				</div>
+			 </div>
+			<div class="panel panel-default form-group">
+			<div class="panel-heading">
+				<strong>Convert history</strong>
+			</div>
+
+			<table class="table">
+				<thead>
+					<tr>
+						<th>#</th>
+						<th>From</th>
+						<th>To</th>
+						<th>Amount</th>
+						<th>Total</th>
+						<th>Historical Date</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="item,i : ${history}" th:class="${i.odd}? 'odd'">
+						<th th:text="${i.count}" scope="row"></th>
+						<td th:text="${item.from}"></td>
+						<td th:text="${item.to}"></td>
+						<td th:text="${item.formattedAmount}"></td>
+						<td th:text="${item.formattedRate}"></td>
+						<td
+							th:text="${item.reference} ? ${#dates.format(item.reference, 'dd/MM/yyyy')} : ${'-'}"></td>
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			<div class="text-center"> 
+				<input type="submit" class="btn btn-lg btn-primary" value="Convert"/>
+			</div>
+		</form>
+
+	</div>
+</body>
+</html>

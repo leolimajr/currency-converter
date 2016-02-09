@@ -1,0 +1,10 @@
+<ehcache xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="ehcache.xsd" name="spring-boot-cache">
+	<cache name="rates"
+		   maxEntriesLocalHeap="2000"
+		   timeToLiveSeconds="3600">
+	</cache>
+	<cache name="historicalRates"
+		   maxEntriesLocalHeap="2000"
+		   timeToLiveSeconds="0">
+	</cache>
+</ehcache> 
