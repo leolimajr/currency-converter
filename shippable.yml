@@ -3,7 +3,7 @@ jdk:
 	- oraclejdk8
 env:
   global:
-    - secure: k9VnX8WlYSJGzyDnZ8ddBjJVTFGKvmoTRxYd0fSxMC9K7K2U1Q7vX5cD6NqnPcVn1MLmvVTr91gN9oaTLwKDVQ/xbjruixq6I0hv0dNzF5ONrQRc3Kfd2NkAQGalRniyIYA1N/nKNI5ItXuoAlDYnPMlgRGtzM1wGjGd+mzXwdLVSArHB32xXM/iyG8VNBKju0FGczhVy7RHO9FVDF1ljgITFouy7Btt43BN+h5dOEAZi16TwYEni6hP8P7bbb4Jf+ITDHfUllvUJjlemQjTd5Bj2o/Kw25IcIzZZvYp46g3G+6IpavIyS+Vz264An1bsfIOiKmDkjh5nOWOR+fv1A==
+    - secure: GedK3oP/4XtLbnMU65kTY+iBOXA0RjV3PIq0FIBpsY4ZVAL7myWxsBSBMgZIlL3yJe7enDE/q0N8Mkmk4dhOJmEeNxmNM11IA8j4tV436GA5gcPYddyzoe1AS17YFdp3tFsPayGb8O82QbHyjKjJ95srmTvipgTcEx4StzJtdl/KP6pW9UYzVKHPCuLDRjFw1rqRyOy+sCAYzvsmDv0flJ+oCbQNbN8urJ0TY8VUVqxUPR2QJ+gE+i2gpT7nLAKA6jCp2zm/3GGEeELV+gTauxX4I8AUmkKNK0lGrAteyEd9kJgRFsrCcUiFyc1i+w50GUQDWqzB3FxCJX473jE7tQ==
 before_install:
   - SUDO=$(which sudo) && $SUDO pip install awsebcli
 before_script: 
