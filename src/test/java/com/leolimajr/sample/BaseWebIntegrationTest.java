@@ -18,7 +18,7 @@ import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringApplicationConfiguration(ApplicationConfig.class)
-@WebIntegrationTest({ "server.port=0", "management.port=0" })
+@WebIntegrationTest({ "server.port=0" })
 @DirtiesContext
 @ActiveProfiles(ApplicationConfig.ConfigProfile.WEB_INTEGRATION_TEST)
 @Sql(scripts = "/dml-login.sql")
