@@ -138,7 +138,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
-					<maxAttempts>180</maxAttempts>
+					<maxAttempts>240</maxAttempts>
 				</configuration>
 				<executions>
 					<execution>
